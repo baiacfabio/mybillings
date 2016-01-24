@@ -1,18 +1,20 @@
-define(['app', 'js/billingsModel', 'hbs!js/day/day'], function(app, Billings, viewTemplate) {
+define([
+	'hbs!js/day/dayObservations', 
+	'hbs!js/day/dayChart', 
+	'hbs!js/day/dayNotes'], function(dayObservationsTemplate, dayChartTemplate, dayNotesTemplate) {
 	var $ = Dom7;
 
-	function render(params) {
-		console.log("render");
-		$('.js-observations-container').html(viewTemplate({ model: params.model.observation }));
-		$('.js-notes-container').html(viewTemplate({ model: params.model.notes }));
-		$('.js-chart-container').html(viewTemplate({ model: params.model.chart }));
+	function render(params) {		
+		$('.js-observations-container').html(dayObservationsTemplate(params.model));
+		$('.js-notes-container').html(dayNotesTemplate(params.model));
+		$('.js-chart-container').html(dayChartTemplate(params.model));
 		bindEvents(params.bindings);
 	}
 
 	function reRender(params) {
-		$('.js-observations-container').html(viewTemplate({ model: params.model.observation }));
-		$('.js-notes-container').html(viewTemplate({ model: params.model.notes }));
-		$('.js-chart-container').html(viewTemplate({ model: params.model.chart }));
+		$('.js-observations-container').html(dayObservationsTemplate({ model: params.model }));
+		$('.js-notes-container').html(dayNotesTemplate({ model: params.model }));
+		$('.js-chart-container').html(dayNotesTemplate({ model: params.model }));
 	}
 
 	function bindEvents(bindings) {

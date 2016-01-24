@@ -63,7 +63,7 @@
 	              <div class="navbar-inner">
 	              	<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
 	                <div class="center sliding">My Billings</div>
-	                <div class="right"><a href="#" class="link"><i class="icon mb-icon-calendar"></i></a><a href="#" class="link icon-only"> <!--<i class="flaticon-show8"></i>--><i class="icon mb-icon-more"></i></a></div>
+	                <div class="right"><a href="#"  data-popover=".popover-contacts" class="link open-popover"><i class="icon mb-icon-calendar"></i></a><a href="#" class="link icon-only"> <!--<i class="flaticon-show8"></i>--><i class="icon mb-icon-more"></i></a></div>
 	              </div>
 	            </div>
 	            <div class="fake-navbar bg-deeppurple"></div>
@@ -88,20 +88,23 @@
 					  <div class="tabs">
 					    <div id="tab1" class="page-content tab active">
 					      <div class="content-block js-observations-container">
-					        <p>This is tab 1 content</p>
-					
+					        <span class="fa fa-binoculars fa-5x"></span>
+							<p>No Observations</p>
+							<p> Tap the "+" button to add an observation</p>					
 					      </div>
 					    </div>
 					    <div id="tab2" class="page-content tab">
-					      <div class="content-block js-chart-container">
-					        <p>This is tab 2 content</p>
-					       
+					      <div class="content-block js-chart-container">					        
+					        <span class="fa fa-pie-chart fa-5x"></span>
+							<p>Chart not available with this free version</p>
+							<p>Upgrade to Pro to view chart</p>					       
 					      </div>
 					    </div>
 					    <div id="tab3" class="page-content tab">
 					      <div class="content-block js-notes-container">
-					        <p>This is tab 3 content</p>
-					        
+					        <span class="fa fa-sticky-note"></span>
+							<p>No Notes</p>
+							<p>Tap the "+" button to add an observation</p>					        
 					      </div>
 					    </div>
 					  </div>
@@ -110,10 +113,49 @@
 	        </div>
 		</div>
 	</div>
+	<div class="popover popover-menu">
+      <div class="popover-inner">
+        <div class="list-block media-list">
+          <ul>
+            <li class="item-content">
+              <div class="item-media"><img src="http://lorempixel.com/88/88/people/1" width="40"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Ali Connors</div>
+                </div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-media"><img src="http://lorempixel.com/88/88/people/2" width="40"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Sandra Adams</div>
+                </div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-media"><img src="http://lorempixel.com/88/88/people/3" width="40"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Trevor Hansen</div>
+                </div>
+              </div>
+            </li>
+            <li><a href="#" class="item-link item-content bg-purple color-white ripple-white">
+                <div class="item-media"><i class="icon ks-icon-edit"></i></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">Add New</div>
+                  </div>
+                </div></a></li>
+          </ul>
+        </div>
+      </div>
 	</body>
 </html>
 <script type="text/javascript" src="lib/lodash.js"></script>
 <script type="text/javascript" src="lib/framework7.js"></script>
 <script type="text/javascript" src="lib/moment.min.js"></script>
+<script type="text/javascript" src="lib/crypto-sha1-hmac-pbkdf2.js"></script>
 <!--<script type="text/javascript" src="app.js"></script>-->
 <script data-main="app" src="lib/require.js"></script>

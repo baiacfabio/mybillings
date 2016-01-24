@@ -1,4 +1,4 @@
-define(["app","js/day/dayView", "js/billingsModel"], function(app, DayView, Billings) {
+define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, DayView) {
 
 	/**
 	 * Bindings array. Bind DOM event to some handler function in controller
@@ -27,13 +27,9 @@ define(["app","js/day/dayView", "js/billingsModel"], function(app, DayView, Bill
 		}
 	];
 
-	function init(){
-		var query = {};
-		var billings = JSON.parse(localStorage.getItem("billingsData"));
-		if (query && query.id) {
-			billings = new Billings(_.find(billings, { id: query.id }));
-		}
-		console.log("dayView");
+	var billings = loadBillingsData();
+
+	function init(){	
 		DayView.render({
 			model: billings,
 			bindings: bindings
@@ -44,25 +40,24 @@ define(["app","js/day/dayView", "js/billingsModel"], function(app, DayView, Bill
 		app.router.load('billingsEdit', {id: billings.id });
 	}
 
-	function showChart() {
-		state.isFavorite = false;
+	function showChart() {		
 		var billings = loadBillingsData();
-		DayView.reRender({ model: billings, header: "Chart" });
+		DayView.reRender({ model: billings });
 	}
 
-	function showNotes() {
-		state.isFavorite = false;
+	function showNotes() {		
 		var billings = loadBillingsData();
-		DayView.reRender({ model: billings, header: "Notes" });
+		DayView.reRender({ model: billings });
 	}
 
 	function showObservations() {
 		state.isFavorite = false;
 		var billings = loadBillingsData();
-		DayView.reRender({ model: billings, header: "Observations" });
+		DayView.reRender({ model: billings });
 	}
 
 	function loadBillingsData(filter) {
+		localStorage.clear();
 		var localBillings = localStorage.getItem("billingsData");
 		var billings = localBillings ? JSON.parse(localBillings) : tempInitializeStorage();
 		// if (filter) {
@@ -76,6 +71,15 @@ define(["app","js/day/dayView", "js/billingsModel"], function(app, DayView, Bill
 		return billings;
 	}
 
+	function tempInitializeStorage() {
+		var billings = [
+			new Billings(),
+			new Billings(),
+			new Billings(),			
+		];
+		localStorage.setItem("billingsData", JSON.stringify(billings));
+		return JSON.parse(localStorage.getItem("billingsData"));
+	}
 	return {
 		init: init
 	};

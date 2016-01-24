@@ -56,7 +56,7 @@ define('app', ['js/router', 'js/utils'], function(Router, Utils) {
             }
         },
         formatValue: function (p, values, displayValues) {
-            return displayValues[0] + ' ' + values[1] + ', ' + values[2] + ' ' + values[3] + ':' + values[4];
+            return displayValues[0] + ' ' + values[1] + ', ' + values[2]; // + ' ' + values[3] + ':' + values[4];
         },
         cols: [
             // Months

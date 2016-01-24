@@ -1,12 +1,15 @@
 define(['app'], function(app) {
 
     function Billings(values) {
+    	var today = moment();
+    	var id = app.utils.generateUUID();
+    	console.log(id);
 		values = values || {};
-		this.id = values['id'] || app.utils.generateUUID();		
+		this.id = values['id'] || id;		
 		this.createdOn = values['createdOn'] || new Date();
 
-		this.timeStamp = values['timeStamp'] || null;
-		this.day = values['day'] || '';
+		this.timeStamp = values['timeStamp'] || today.valueOf();
+		this.day = values['day'] || today.format('dddd');
 		this.observation = {} || null;
 		this.observation['isPeak'] = values['isPeak'] || false;
 		this.observation['wait'] = values['wait'] || '';
