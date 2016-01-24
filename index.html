@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="with-statusbar-overlay">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="theme-color" content="#673ab7">
+		<title>My Billings</title>
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+    	<link rel="stylesheet" href="lib/css/framework7.material.css">
+    	<link rel="stylesheet" href="lib/css/framework7.material.colors.min.css">
+    	<link rel="stylesheet" href="lib/fonts/fontawesome/font-awesome.min.css">    	
+    	<link rel="stylesheet" href="lib/fonts/lineicons/font-lineicons.css">
+    	<link rel="stylesheet" href="lib/fonts/flaticons/flaticon.css">
+		<link rel="stylesheet" href="css/app.css">
+		<link href="img/favicon.png" rel="shortcut icon">
+	</head>
+	<body>
+	<!-- Statusbar overlay-->
+	<div class="statusbar-overlay"></div>
+    <!-- Panels Overlay -->
+    <div class="panel-overlay"></div>
+    <!-- Left Panel with Reveal effect -->
+    <div class="panel panel-left panel-reveal">
+        <div class="list-block">
+			<div class="list-group">
+				<ul>
+					<li class="item-content list-panel-home close-panel item-link">
+						<div class="item-media"><i class="fa fa-home"></i></div>
+						<div class="item-inner">
+							<div class="item-title">Home</div>
+						</div>
+					</li>
+					<li class="item-content list-panel-day close-panel item-link">
+						<div class="item-media"><i class="fa fa-sun-o"></i></div>
+						<div class="item-inner">
+							<div class="item-title">Day</div>
+						</div>
+					</li>
+					<li class="item-content list-panel-month close-panel item-link">
+						<div class="item-media"><i class="fa fa-calendar"></i></div>
+						<div class="item-inner">
+							<div class="item-title">Month</div>
+						</div>
+					</li>
+					<li class="item-content list-panel-charts close-panel item-link">
+						<div class="item-media"><i class="fa fa-bar-chart"></i></div>
+						<div class="item-inner">
+							<div class="item-title">Charts</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+        </div>
+    </div>
+    <!-- Views-->
+	<div class="views">
+		<div class="view view-main navbar-fixed">
+			<div class="pages">
+	          <div data-page="day" class="page"><a href="#" data-tab="observations" class="open-popup link floating-button color-deeppurple js-billings-add-link"><i class="icon icon-plus"></i></a>
+	            <div class="navbar theme-deeppurple">
+	              <div class="navbar-inner">
+	              	<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
+	                <div class="center sliding">My Billings</div>
+	                <div class="right"><a href="#" class="link"><i class="icon mb-icon-calendar"></i></a><a href="#" class="link icon-only"> <!--<i class="flaticon-show8"></i>--><i class="icon mb-icon-more"></i></a></div>
+	              </div>
+	            </div>
+	            <div class="fake-navbar bg-deeppurple"></div>
+	            <div class="page-content">
+	            	<div style="margin:0" class="list-block">
+				      <ul>
+				        <li>
+				          <div class="item-content">
+				            <div class="item-inner"> 
+				              <div class="item-input">
+				                <input type="text" placeholder="Date Time" readonly="readonly" id="mb-picker-date"/>
+				              </div>
+				            </div>
+				          </div>
+				        </li>
+				      </ul>
+				    </div>
+	              	<div id="mb-picker-date-container"></div> 
+	              	<div class="toolbar tabbar">
+					    <div class="toolbar-inner"><a href="#tab1" class="active tab-link js-observations-tab">Observations</a><a href="#tab2" class="tab-link js-chart-tab">Chart</a><a href="#tab3" class="tab-link js-notes-tab">Notes</a></div>
+					  </div>
+					  <div class="tabs">
+					    <div id="tab1" class="page-content tab active">
+					      <div class="content-block js-observations-container">
+					        <p>This is tab 1 content</p>
+					
+					      </div>
+					    </div>
+					    <div id="tab2" class="page-content tab">
+					      <div class="content-block js-chart-container">
+					        <p>This is tab 2 content</p>
+					       
+					      </div>
+					    </div>
+					    <div id="tab3" class="page-content tab">
+					      <div class="content-block js-notes-container">
+					        <p>This is tab 3 content</p>
+					        
+					      </div>
+					    </div>
+					  </div>
+	            </div>
+	          </div>
+	        </div>
+		</div>
+	</div>
+	</body>
+</html>
+<script type="text/javascript" src="lib/lodash.js"></script>
+<script type="text/javascript" src="lib/framework7.js"></script>
+<script type="text/javascript" src="lib/moment.min.js"></script>
+<!--<script type="text/javascript" src="app.js"></script>-->
+<script data-main="app" src="lib/require.js"></script>

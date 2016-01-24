@@ -1,0 +1,205 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}.flaticon-alarm18:before {
+	content: "\e000";
+}
+.flaticon-ascending1:before {
+	content: "\e001";
+}
+.flaticon-ascending24:before {
+	content: "\e002";
+}
+.flaticon-blood10:before {
+	content: "\e003";
+}
+.flaticon-blood8:before {
+	content: "\e004";
+}
+.flaticon-bodypart30:before {
+	content: "\e005";
+}
+.flaticon-calendar60:before {
+	content: "\e006";
+}
+.flaticon-calendar68:before {
+	content: "\e007";
+}
+.flaticon-check52:before {
+	content: "\e008";
+}
+.flaticon-check7:before {
+	content: "\e009";
+}
+.flaticon-checking3:before {
+	content: "\e00a";
+}
+.flaticon-checkmark10:before {
+	content: "\e00b";
+}
+.flaticon-circle213:before {
+	content: "\e00c";
+}
+.flaticon-circle54:before {
+	content: "\e00d";
+}
+.flaticon-clear5:before {
+	content: "\e00e";
+}
+.flaticon-clock125:before {
+	content: "\e00f";
+}
+.flaticon-clock136:before {
+	content: "\e010";
+}
+.flaticon-cross-mark:before {
+	content: "\e011";
+}
+.flaticon-desk-bell:before {
+	content: "\e012";
+}
+.flaticon-down14:before {
+	content: "\e013";
+}
+.flaticon-family40:before {
+	content: "\e014";
+}
+.flaticon-female127:before {
+	content: "\e015";
+}
+.flaticon-female131:before {
+	content: "\e016";
+}
+.flaticon-file161:before {
+	content: "\e017";
+}
+.flaticon-file329:before {
+	content: "\e018";
+}
+.flaticon-hospital35:before {
+	content: "\e019";
+}
+.flaticon-info28:before {
+	content: "\e01a";
+}
+.flaticon-info31:before {
+	content: "\e01b";
+}
+.flaticon-levels1:before {
+	content: "\e01c";
+}
+.flaticon-lock26:before {
+	content: "\e01d";
+}
+.flaticon-male12:before {
+	content: "\e01e";
+}
+.flaticon-male243:before {
+	content: "\e01f";
+}
+.flaticon-medical68:before {
+	content: "\e020";
+}
+.flaticon-moonphase21:before {
+	content: "\e021";
+}
+.flaticon-note65:before {
+	content: "\e022";
+}
+.flaticon-notebook24:before {
+	content: "\e023";
+}
+.flaticon-notification4:before {
+	content: "\e024";
+}
+.flaticon-open98:before {
+	content: "\e025";
+}
+.flaticon-open99:before {
+	content: "\e026";
+}
+.flaticon-pencil41:before {
+	content: "\e027";
+}
+.flaticon-play45:before {
+	content: "\e028";
+}
+.flaticon-pregnancy4:before {
+	content: "\e029";
+}
+.flaticon-pregnant:before {
+	content: "\e02a";
+}
+.flaticon-progress13:before {
+	content: "\e02b";
+}
+.flaticon-questions8:before {
+	content: "\e02c";
+}
+.flaticon-report1:before {
+	content: "\e02d";
+}
+.flaticon-reproduction4:before {
+	content: "\e02e";
+}
+.flaticon-save-file:before {
+	content: "\e02f";
+}
+.flaticon-save:before {
+	content: "\e030";
+}
+.flaticon-show8:before {
+	content: "\e031";
+}
+.flaticon-sperm:before {
+	content: "\e032";
+}
+.flaticon-sperm5:before {
+	content: "\e033";
+}
+.flaticon-stats121:before {
+	content: "\e034";
+}
+.flaticon-telemarketing:before {
+	content: "\e035";
+}
+.flaticon-three115:before {
+	content: "\e036";
+}
+.flaticon-tick7:before {
+	content: "\e037";
+}
+.flaticon-time36:before {
+	content: "\e038";
+}
+.flaticon-tool892:before {
+	content: "\e039";
+}
+.flaticon-utero:before {
+	content: "\e03a";
+}
+.flaticon-uterus:before {
+	content: "\e03b";
+}
+.flaticon-women8:before {
+	content: "\e03c";
+}
+.flaticon-worker36:before {
+	content: "\e03d";
+}
+.flaticon-writing46:before {
+	content: "\e03e";
+}
