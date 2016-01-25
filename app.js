@@ -14,7 +14,8 @@ require.config({
 define('app', ['js/router', 'js/utils'], function(Router, Utils) {
 
 	Router.init();
-    var today = new Date();
+    window.PickerDate = new Date();
+    var today = new Date();        
 	var f7 = new Framework7({
 		modalTitle: 'MyBillings',
 		swipePanel: 'left',
@@ -54,6 +55,7 @@ define('app', ['js/router', 'js/utils'], function(Router, Utils) {
             if (values[1] > daysInMonth) {
                 picker.cols[1].setValue(daysInMonth);
             }
+            window.PickerDate = new Date(picker.value[2], picker.value[0], picker.value[1]);
         },
         formatValue: function (p, values, displayValues) {
             return displayValues[0] + ' ' + values[1] + ', ' + values[2]; // + ' ' + values[3] + ':' + values[4];
@@ -110,6 +112,7 @@ define('app', ['js/router', 'js/utils'], function(Router, Utils) {
 		f7: f7,
 		mainView: mainView,
 		router: Router,
-		utils: Utils
+		utils: Utils,
+        pickerDate: window.PickerDate
 	};
 });

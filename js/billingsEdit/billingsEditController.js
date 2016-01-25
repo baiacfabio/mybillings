@@ -17,7 +17,7 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 			state.isNew = false;
 		}
 		else {
-			billings = new Billings({ isFavorite: query.isFavorite });
+			billings = new Billings();
 			state.isNew = true;
 		}
 		View.render({ model: billings, bindings: bindings, state: state, doneCallback: saveBillings });
@@ -31,7 +31,7 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 				var billings = JSON.parse(localStorage.getItem("billingsData"));
 				_.remove(billings, { id: billings.id });
 				localStorage.setItem("billingsData", JSON.stringify(billings));
-				app.router.load('list'); // reRender main page view
+				app.router.load('day'); // reRender main page view
 				app.mainView.goBack("index.html", false);
 				app.f7.closeModal();
 			}
@@ -53,16 +53,16 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 		}
 		billings.push(billings);
 		localStorage.setItem("billingsData", JSON.stringify(billings));
-		app.router.load('list'); // reRender main page view
+		app.router.load('day'); // reRender main page view
 		closePage();
 	}
 
 	function closePage() {
 		if (!state.isNew) {
-			app.router.load('billings', {id: billings.id});
+			app.router.load('day', {id: billings.id});
 		}
 		else {
-			app.mainView.loadPage('billings.html?id=' + billings.id, false);
+			app.mainView.loadPage('day.html?id=' + billings.id, false);
 		}
 		app.f7.closeModal();
 	}

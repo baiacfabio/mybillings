@@ -5,9 +5,7 @@ define([
 	var $ = Dom7;
 
 	function render(params) {		
-		$('.js-observations-container').html(dayObservationsTemplate(params.model));
-		$('.js-notes-container').html(dayNotesTemplate(params.model));
-		$('.js-chart-container').html(dayChartTemplate(params.model));
+		$('.js-observations-container').html(dayObservationsTemplate(params.model));		
 		bindEvents(params.bindings);
 	}
 

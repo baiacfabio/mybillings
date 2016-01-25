@@ -3,13 +3,15 @@ define(['app'], function(app) {
     function Billings(values) {
     	var today = moment();
     	var id = app.utils.generateUUID();
-    	console.log(id);
+
 		values = values || {};
 		this.id = values['id'] || id;		
 		this.createdOn = values['createdOn'] || new Date();
 
 		this.timeStamp = values['timeStamp'] || today.valueOf();
 		this.day = values['day'] || today.format('dddd');
+		this.date = values['date'] || today.format('YYYY-MM-DD');
+		this.isCycleStart = values['isCycleStart'] || false;
 		this.observation = {} || null;
 		this.observation['isPeak'] = values['isPeak'] || false;
 		this.observation['wait'] = values['wait'] || '';
@@ -19,8 +21,8 @@ define(['app'], function(app) {
 		this.observation['quantity'] = values['quantity'] || '';
 		this.observation['blood'] = values['blood'] || '';
 		this.observation['infertile'] = values['infertile'] || false;
-		this.notes = values['notes'] || undefined;
-		this.chart = values['chart'] || undefined;
+		this.notes = values['notes'] || '';
+		this.chart = values['chart'] || '';
     }
 
 	Billings.prototype.setValues = function(inputValues) {

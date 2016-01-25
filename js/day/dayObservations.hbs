@@ -1,30 +1,54 @@
-<div class="list-block">
-	<ul>
-		<li>
-		  <div class="item-content">
-		    <div class="item-media"><i class="flaticon-blood8"></i></div>
-		    <div class="item-inner"> 
-		      <div class="item-title">Peak</div>
-		      <div class="item-after"><span class="badge">1</span></div>
-		    </div>
-		  </div>
-		</li>
-		<li>
-		  <div class="item-content">
-		    <div class="item-media"><i class="flaticon-file161"></i></div>
-		    <div class="item-inner"> 
-		      <div class="item-title">Possibly fertile</div>
-		      <div class="item-after"> <span class="badge">2</span></div>
-		    </div>
-		  </div>
-		</li>
-		<li>
-		  <div class="item-content">
-		    <div class="item-media"><i class="flaticon-uterus"></i></div>
-		    <div class="item-inner"> 
-		      <div class="item-title">Appearance</div>
-		    </div>
-		  </div>
-		</li>
-	</ul>
-<div>
+{{#if observation.sensation}}
+	<div class="list-block">
+		<ul>
+			{{#if observation.isPeak}}
+				<li>
+				  <div class="item-content">
+				    <div class="item-media"><i class="icon flaticon-ascending24"></i></div>
+				    <div class="item-inner"> 
+				      	<div class="item-title">Peak</div>
+				      	<div class="item-after"><span class="badge">YES</span></div>
+				    </div>
+				</div>				
+			{{/if}}	
+			{{#if observation.blood}}
+				<li>
+				  <div class="item-content">
+				    <div class="item-media"><i class="flaticon-blood8"></i></div>
+				    <div class="item-inner"> 
+				      <div class="item-title">Blood</div>
+				      <div class="item-after"> {{observation.blood}}</div>
+				    </div>
+				  </div>
+				</li>
+			{{/if}}
+			{{#if observation.appearance}}
+				<li>
+				  <div class="item-content">
+				    <div class="item-media"><i class="flaticon-hospital35"></i></div>
+				    <div class="item-inner"> 
+				      <div class="item-title">Appearance</div>
+				      <div class="item-after"> {{observation.appearance}}</div>
+				    </div>
+				  </div>
+				</li>
+			{{/if}}					
+			{{#if observation.sensation}}
+				<li>
+				  <div class="item-content">
+				    <div class="item-media"><i class="flaticon-female131"></i></div>
+				    <div class="item-inner"> 
+				      <div class="item-title">Sensation</div>
+				      <div class="item-after"> {{observation.appearance}}</div>
+				    </div>
+				  </div>
+				</li>
+			{{/if}}	
+		</ul>
+	<div>
+{{else}}
+	<span class="fa fa-binoculars fa-5x"></span>
+	<p>No Observations</p>
+	<p> Tap the "+" button to add an observation or view more information</p>
+{{/if}}
+
