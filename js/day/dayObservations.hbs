@@ -1,45 +1,45 @@
-{{#if observation.sensation}}
+{{#if sensation}}
 	<div class="list-block">
 		<ul>
-			{{#if observation.isPeak}}
+			{{#if isPeak}}
 				<li>
 				  <div class="item-content">
-				    <div class="item-media"><i class="icon flaticon-ascending24"></i></div>
+				    <div class="item-media"><i class="flaticon-ascending24"></i></div>
 				    <div class="item-inner"> 
 				      	<div class="item-title">Peak</div>
 				      	<div class="item-after"><span class="badge">YES</span></div>
 				    </div>
 				</div>				
 			{{/if}}	
-			{{#if observation.blood}}
+			{{#if blood}}
 				<li>
 				  <div class="item-content">
 				    <div class="item-media"><i class="flaticon-blood8"></i></div>
 				    <div class="item-inner"> 
 				      <div class="item-title">Blood</div>
-				      <div class="item-after"> {{observation.blood}}</div>
+				      <div class="item-after"> {{blood}}</div>
 				    </div>
 				  </div>
 				</li>
 			{{/if}}
-			{{#if observation.appearance}}
+			{{#if appearance}}
 				<li>
 				  <div class="item-content">
 				    <div class="item-media"><i class="flaticon-hospital35"></i></div>
 				    <div class="item-inner"> 
 				      <div class="item-title">Appearance</div>
-				      <div class="item-after"> {{observation.appearance}}</div>
+				      <div class="item-after"> {{appearance}}</div>
 				    </div>
 				  </div>
 				</li>
 			{{/if}}					
-			{{#if observation.sensation}}
+			{{#if sensation}}
 				<li>
 				  <div class="item-content">
 				    <div class="item-media"><i class="flaticon-female131"></i></div>
 				    <div class="item-inner"> 
 				      <div class="item-title">Sensation</div>
-				      <div class="item-after"> {{observation.appearance}}</div>
+				      <div class="item-after"> {{sensation}}</div>
 				    </div>
 				  </div>
 				</li>
@@ -49,6 +49,6 @@
 {{else}}
 	<span class="fa fa-binoculars fa-5x"></span>
 	<p>No Observations</p>
-	<p> Tap the "+" button to add an observation or view more information</p>
+	<p> Tap the "+" button to add an observation</p>
 {{/if}}
 

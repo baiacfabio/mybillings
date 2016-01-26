@@ -1,48 +1,135 @@
 <div class="popup">
 	<div class="view view-popup navbar-fixed">
 		<div class="navbar theme-deeppurple">
-			<div class="navbar-inner color-deeppurple">
+			<div class="navbar-inner">
 				<div class="left"><a href="#" class="link close-popup"><i class="flaticon-clear5"></i></a></div>
 				<div class="center sliding">
 					{{#if state.isNew}}
-						New Observation
+						New Record
 					{{/if}}
 				</div>
 				<div class="right js-billings-save-link"><a href="#" class="link">SAVE <i class="flaticon-save"></i></a></div>
 			</div>
 		</div>
 		<div data-page="day" class="page">
-			<div class="page-content billings-edit-form">
+			<div class="page-content billings-edit-form">				
+				<div class="content-block-title">Discharge from vulva</div>
 				<div class="list-block">
 					<ul>
 						<li>
-							<div class="item-content">
-								<div class="item-media"><i class="fa fa-binoculars"></i></div>
+							<div class="item-content">								
+								<div class="item-inner">
+									<div class="item-title">First Menstrual Day?</div>
+									<div class="item-input">
+										<label class="label-switch">
+						                  <input id="isCycleStart" type="checkbox" {{bindAttr checked="model.isCycleStart"}}/>
+						                  <div class="checkbox"></div>
+						                </label>
+						            </div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">								
+								<div class="item-inner">
+									<div class="item-title floating-label">Any sign of blood?</div>
+									<div class="item-input">
+										<input id="blood" type="text" readonly="readonly" value="{{model.blood}}">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">								
 								<div class="item-inner">
 									<div class="item-title floating-label">Appearance</div>
 									<div class="item-input">
-										<input id="appearance" type="text" value="{{model.observation.appearance}}">
+										<input id="appearance" type="text" readonly="readonly" value="{{model.appearance}}">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">								
+								<div class="item-inner">
+									<div class="item-title floating-label">How much discharge</div>
+									<div class="item-input">
+										<input id="quantity" type="text" readonly="readonly" value="{{model.quantity}}">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">								
+								<div class="item-inner">
+									<div class="item-title floating-label">Fluidity</div>
+									<div class="item-input">
+										<input id="fluidity" type="text" readonly="readonly" value="{{model.fluidity}}">
 									</div>
 								</div>
 							</div>
 						</li>							
 					</ul>
 				</div>
+				<div class="content-block-title">Sensation at vulva</div>
 				<div class="list-block">
 					<ul>
 						<li>
-							<div class="item-content">
-								<div class="item-media"><i class="flaticon-pencil41"></i></div>
+							<div class="item-content">								
 								<div class="item-inner">
-									<div class="item-title floating-label">Sensation</div>
+									<div class="item-title">Swollen?</div>
 									<div class="item-input">
-										<input id="dropdown-sensation" type="text" value="{{model.observation.sensation}}">
+										<label class="label-switch">
+						                  <input id="swelling" type="checkbox" {{bindAttr checked="model.swollen"}}/>
+						                  <div class="checkbox"></div>
+						                </label>
 									</div>
 								</div>
 							</div>
-						</li>						
+						</li>
+						<li>
+							<div class="item-content">								
+								<div class="item-inner">
+									<div class="item-title">Intercourse?</div>
+									<div class="item-input">
+										<label class="label-switch">
+						                  <input id="intercourse" type="checkbox" {{#if model.intercourse}}checked{{/if}}/>
+						                  <div class="checkbox"></div>
+						                </label>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">								
+								<div class="item-inner">
+									<div class="item-title floating-label">Sensation</div>
+									<div class="item-input">
+										<input id="sensation" type="text" readonly="readonly" value="{{model.sensation}}">
+									</div>
+								</div>
+							</div>
+						</li>
+													
 					</ul>
 				</div>
+				<div class="content-block-title">Enter other remarks</div>
+				<div class="list-block">
+					<ul>
+						<li class="align-top">
+				          <div class="item-content">
+				            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+				            <div class="item-inner"> 
+				              <div class="item-title label">Notes</div>
+				              <div class="item-input">
+				                <textarea id="notes" class="resizable">{{model.notes}}</textarea>
+				              </div>
+				            </div>
+				          </div>
+				        </li>						
+					</ul>
+				</div>
+				
 				{{#unless state.isNew}}
 					<div class="list-block">
 						<ul>

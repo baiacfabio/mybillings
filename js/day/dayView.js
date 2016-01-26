@@ -1,7 +1,6 @@
 define([
 	'hbs!js/day/dayObservations', 
-	'hbs!js/day/dayChart', 
-	'hbs!js/day/dayNotes'], function(dayObservationsTemplate, dayChartTemplate, dayNotesTemplate) {
+	'hbs!js/day/dayChart'], function(dayObservationsTemplate, dayChartTemplate) {
 	var $ = Dom7;
 
 	function render(params) {		
@@ -10,9 +9,8 @@ define([
 	}
 
 	function reRender(params) {
-		$('.js-observations-container').html(dayObservationsTemplate({ model: params.model }));
-		$('.js-notes-container').html(dayNotesTemplate({ model: params.model }));
-		$('.js-chart-container').html(dayNotesTemplate({ model: params.model }));
+		$('.js-observations-container').html(dayObservationsTemplate({ model: params.model }));		
+		$('.js-chart-container').html(dayChartTemplate({ model: params.model }));
 	}
 
 	function bindEvents(bindings) {

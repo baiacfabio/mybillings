@@ -1257,7 +1257,7 @@ html:not(.watch-active-state) .tabbar a.tab-link:active,
   top: 56px;
 }
 .navbar-fixed .toolbar {
-  top: 56px;
+  top: 0px;
 }
 .navbar-fixed .messagebar,
 .navbar-fixed .toolbar-bottom {

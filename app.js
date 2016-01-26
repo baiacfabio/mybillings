@@ -1,12 +1,18 @@
 require.config({
     paths: {
-        handlebars: "lib/handlebars",
+        handlebarsCore: "lib/handlebars",
+        handlebars: "lib/helpers",
         text: "lib/text",
         hbs: "lib/hbs"
     },
     shim: {
+        // Handlebars, (precompiled) templates and helpers
+        handlebarsCore: {
+            exports: 'Handlebars'
+        },
         handlebars: {
-            exports: "Handlebars"
+            deps: ['handlebarsCore'],
+            exports: 'Handlebars'
         }
     }
 });
@@ -44,70 +50,73 @@ define('app', ['js/router', 'js/utils'], function(Router, Utils) {
     // });
 
     // Inline date-time
-    var pickerInline = f7.picker({
-        input: '#mb-picker-date',
-        container: '#mb-picker-date-container',
-        toolbar: false,
-        rotateEffect: true,
-        value: [today.getMonth(), today.getDate(), today.getFullYear(), today.getHours(), (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes())],
-        onChange: function (picker, values, displayValues) {
-            var daysInMonth = new Date(picker.value[2], picker.value[0]*1 + 1, 0).getDate();
-            if (values[1] > daysInMonth) {
-                picker.cols[1].setValue(daysInMonth);
-            }
-            window.PickerDate = new Date(picker.value[2], picker.value[0], picker.value[1]);
-        },
-        formatValue: function (p, values, displayValues) {
-            return displayValues[0] + ' ' + values[1] + ', ' + values[2]; // + ' ' + values[3] + ':' + values[4];
-        },
-        cols: [
-            // Months
-            {
-                values: ('0 1 2 3 4 5 6 7 8 9 10 11').split(' '),
-                displayValues: ('January February March April May June July August September October November December').split(' '),
-                textAlign: 'left'
-            },
-            // Days
-            {
-                values: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
-            },
-            // Years
-            {
-                values: (function () {
-                    var arr = [];
-                    for (var i = 1950; i <= 2030; i++) { arr.push(i); }
-                    return arr;
-                })(),
-            },
-            // Space divider
-            {
-                divider: true,
-                content: '&nbsp;&nbsp;'
-            },
-            // Hours
-            {
-                values: (function () {
-                    var arr = [];
-                    for (var i = 0; i <= 23; i++) { arr.push(i); }
-                    return arr;
-                })(),
-            },
-            // Divider
-            {
-                divider: true,
-                content: ':'
-            },
-            // Minutes
-            {
-                values: (function () {
-                    var arr = [];
-                    for (var i = 0; i <= 59; i++) { arr.push(i < 10 ? '0' + i : i); }
-                    return arr;
-                })(),
-            }
-        ]
+    // var pickerInline = f7.picker({
+    //     input: '#mb-picker-date',
+    //     container: '#mb-picker-date-container',
+    //     toolbar: false,
+    //     rotateEffect: true,
+    //     value: [today.getMonth(), today.getDate(), today.getFullYear(), today.getHours(), (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes())],
+    //     onChange: function (picker, values, displayValues) {
+    //         var daysInMonth = new Date(picker.value[2], picker.value[0]*1 + 1, 0).getDate();
+    //         if (values[1] > daysInMonth) {
+    //             picker.cols[1].setValue(daysInMonth);
+    //         }
+    //         window.PickerDate = new Date(picker.value[2], picker.value[0], picker.value[1]);
+    //     },
+    //     formatValue: function (p, values, displayValues) {
+    //         return displayValues[0] + ' ' + values[1] + ', ' + values[2]; // + ' ' + values[3] + ':' + values[4];
+    //     },
+    //     cols: [
+    //         // Months
+    //         {
+    //             values: ('0 1 2 3 4 5 6 7 8 9 10 11').split(' '),
+    //             displayValues: ('January February March April May June July August September October November December').split(' '),
+    //             textAlign: 'left'
+    //         },
+    //         // Days
+    //         {
+    //             values: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+    //         },
+    //         // Years
+    //         {
+    //             values: (function () {
+    //                 var arr = [];
+    //                 for (var i = 1950; i <= 2030; i++) { arr.push(i); }
+    //                 return arr;
+    //             })(),
+    //         },
+    //         // Space divider
+    //         {
+    //             divider: true,
+    //             content: '&nbsp;&nbsp;'
+    //         },
+    //         // Hours
+    //         {
+    //             values: (function () {
+    //                 var arr = [];
+    //                 for (var i = 0; i <= 23; i++) { arr.push(i); }
+    //                 return arr;
+    //             })(),
+    //         },
+    //         // Divider
+    //         {
+    //             divider: true,
+    //             content: ':'
+    //         },
+    //         // Minutes
+    //         {
+    //             values: (function () {
+    //                 var arr = [];
+    //                 for (var i = 0; i <= 59; i++) { arr.push(i < 10 ? '0' + i : i); }
+    //                 return arr;
+    //             })(),
+    //         }
+    //     ]
+    // });
+    
+    var calendarDefault = f7.calendar({
+        input: '#mb-picker-date', dateFormat: 'DD, MM dd, yyyy'
     });
-
 	return {
 		f7: f7,
 		mainView: mainView,

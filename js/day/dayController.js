@@ -21,11 +21,6 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 			handler: showChart
 		},
 		{
-			element: '.js-notes-tab',
-			event: 'click',
-			handler: showNotes
-		},
-		{
 			element: 'js-current-date',
 			event: 'change',
 			handler: getCurrentDate
@@ -42,7 +37,7 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 		console.log(event);
 		var date = moment($('#mb-picker-date').val()).format('YYYY-MM-DD');
 		console.log(date);
-	}
+	};
 
 	function init(){	
 		DayView.render({
@@ -54,24 +49,19 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 	function openAddPopup(e) {
 		var obj = (window.PickerDate === date) ? {id: billings.id } : null;
 		app.router.load('billingsEdit', obj );		
-	}
+	};
 
 	function showChart() {				
 		var billings = loadBillingsData(query);
 		DayView.reRender({ model: billings });
-	}
-
-	function showNotes() {			
-		var billings = loadBillingsData(query);
-		DayView.reRender({ model: billings });
-	}
+	};
 
 	function showObservations() {
 		var date = window.PickerDate;	
 		query["date"] = moment(+date).format('YYYY-MM-DD');	
 		var billings = loadBillingsData(query);
 		DayView.reRender({ model: billings });
-	}
+	};
 
 	function loadBillingsData(filter) {
 		localStorage.clear();
@@ -86,7 +76,7 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 		// billings = _.groupBy(billings, function(contact) { return contact.firstName.charAt(0); });
 		// billings = _.toArray(_.mapValues(billings, function(value, key) { return { 'letter': key, 'list': value }; }));
 		return billings;
-	}
+	};
 
 	function tempInitializeStorage() {
 		var billings = [
@@ -96,7 +86,8 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 		];
 		localStorage.setItem("billingsData", JSON.stringify(billings));
 		return JSON.parse(localStorage.getItem("billingsData"));
-	}
+	};
+	
 	return {
 		init: init
 	};

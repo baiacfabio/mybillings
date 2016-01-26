@@ -12,20 +12,25 @@ define(['app'], function(app) {
 		this.day = values['day'] || today.format('dddd');
 		this.date = values['date'] || today.format('YYYY-MM-DD');
 		this.isCycleStart = values['isCycleStart'] || false;
-		this.observation = {} || null;
-		this.observation['isPeak'] = values['isPeak'] || false;
-		this.observation['wait'] = values['wait'] || '';
-		this.observation['appearance'] = values['appearance'] || '';
-		this.observation['sensation'] = values['sensation'] || '';
-		this.observation['symptomDescription'] = values['symptomDescription'] || '';
-		this.observation['quantity'] = values['quantity'] || '';
-		this.observation['blood'] = values['blood'] || '';
-		this.observation['infertile'] = values['infertile'] || false;
+		this.intercourse = values['intercourse'] || false;
+		//this.wait = values['wait'] || true;
+
+		// Observations
+		//this.isPeak = values['isPeak'] || false;
+		this.swollen = values['swollen'] || false;
+		
+		this.appearance = values['appearance'] || '';
+		this.sensation = values['sensation'] || '';
+		this.fluidity = values['fluidity'] || '';
+		this.quantity = values['quantity'] || '';
+		this.blood = values['blood'] || '';
+		//this.infertile = values['infertile'] || false;
+
 		this.notes = values['notes'] || '';
 		this.chart = values['chart'] || '';
     }
 
-	Billings.prototype.setValues = function(inputValues) {
+	Billings.prototype.setValues = function(inputValues) {		
 		for (var i = 0, len = inputValues.length; i < len; i++) {
 			var item = inputValues[i];
 			if (item.type === 'checkbox') {

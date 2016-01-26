@@ -14,7 +14,7 @@
     	<link rel="stylesheet" href="lib/fonts/lineicons/font-lineicons.css">
     	<link rel="stylesheet" href="lib/fonts/flaticons/flaticon.css">
 		<link rel="stylesheet" href="css/app.css">
-		<link href="img/favicon.png" rel="shortcut icon">
+		<link href="img/favicon.png" rel="shortcut icon">		
 	</head>
 	<body>
 	<!-- Statusbar overlay-->
@@ -59,9 +59,8 @@
 		<div class="view view-main navbar-fixed">
 			<div class="pages">
 	          <div data-page="day" class="page">
-	          	 <div class="speed-dial"><a href="#" class="floating-button color-deeppurple"><i class="icon icon-plus"></i><i class="icon icon-close"></i></a>
-				    <div class="speed-dial-buttons"><a href="#" data-tab="observations" class="open-popup link color-deeppurple js-billings-add-link"><i class="icon mb-icon-edit"></i></a><a href="#" class="open-popup link color-deeppurple js-billings-info-link"><i class="flaticon-info31"></i></a></div>
-				</div>	          	
+	          	<a href="#" class="floating-button js-billings-add-link color-deeppurple"><i class="icon icon-plus"></i></a>				
+				          	
 	            <div class="navbar theme-deeppurple">
 	              <div class="navbar-inner">
 	              	<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
@@ -84,10 +83,11 @@
 				        </li>
 				      </ul>
 				    </div>
-	              	<div id="mb-picker-date-container"></div> 
+	              	<!--<div id="mb-picker-date-container"></div> -->
 	              	<div class="toolbar tabbar bg-deeppurple">
-					    <div class="toolbar-inner"><a href="#tab1" class="active tab-link js-observations-tab">Observations</a><a href="#tab2" class="tab-link js-chart-tab">Chart</a><a href="#tab3" class="tab-link js-notes-tab">Notes</a></div>
-					  </div>
+					    <div class="toolbar-inner"><a href="#tab1" class="active tab-link js-observations-tab">Observations</a><a href="#tab2" class="tab-link js-chart-tab">Chart</a></div>
+					</div>
+					<div class="tabs-swipeable-wrap">
 					  <div class="tabs">
 					    <div id="tab1" class="page-content tab active">
 					      <div class="content-block js-observations-container">
@@ -96,19 +96,11 @@
 					    </div>
 					    <div id="tab2" class="page-content tab">
 					      <div class="content-block js-chart-container">					        
-					        <span class="fa fa-pie-chart fa-5x"></span>
-							<p>Chart not available with this free version</p>
-							<p>Upgrade to Pro to view chart</p>					       
+					        				       
 					      </div>
-					    </div>
-					    <div id="tab3" class="page-content tab">
-					      <div class="content-block js-notes-container">
-					        <span class="fa fa-sticky-note"></span>
-							<p>No Notes</p>
-							<p>Tap the "+" button to add an observation</p>					        
-					      </div>
-					    </div>
+					    </div>					   
 					  </div>
+					</div>
 	            </div>
 	          </div>
 	        </div>

@@ -2,23 +2,63 @@ define(['app', 'js/billingsModel', 'hbs!js/billingsEdit/billingsEdit'], function
 	var $ = Dom7;
 
 	function render(params) {
+
 		var template = editTemplate({ model: params.model, state: params.state });
 		app.f7.popup(template);
-
-		// Dropdown with all values
-		var sensations = ('Wet Sticky Dry Moist Damp Slippery').split(' ');
-    	var autocompleteDropdownAll = app.f7.autocomplete({
-	        input: '#dropdown-sensation',
-	        openIn: 'dropdown',
-	        source: function (autocomplete, query, render) {
-	            var results = [];
-	            // Find matched items
-	            for (var i = 0; i < sensations.length; i++) {
-	                if (sensations[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) results.push(sensations[i]);
+		
+		var appearance = ('Slight Mucus,Opaque,Clear Strings,None').split(',');
+		var pickerAppearance = app.f7.picker({
+	        input: '#appearance',
+	        cols: [
+	            {
+	                textAlign: 'center',
+	                values: appearance
 	            }
-	            // Render items by passing array with result items
-	            render(results);
-	        }
+	        ]
+	    });
+
+	    var blood = ('Bleeding,Clots,Spots of blood,None').split(',');
+		var pickerBlood = app.f7.picker({
+	        input: '#blood',
+	        cols: [
+	            {
+	                textAlign: 'center',
+	                values: blood
+	            }
+	        ]
+	    });
+
+	    var quantity = ('Lots,Normal,Little,None').split(',');
+		var pickerQuantity = app.f7.picker({
+	        input: '#quantity',
+	        cols: [
+	            {
+	                textAlign: 'center',
+	                values: quantity
+	            }
+	        ]
+	    });
+
+	    var fluidity = ('Stringy (like eggwhite),Thin,Thick,Seminal Fluid,Creamy,None').split(',');
+		var pickerFluidity = app.f7.picker({
+	        input: '#fluidity',
+	        cols: [
+	            {
+	                textAlign: 'center',
+	                values: fluidity
+	            }
+	        ]
+	    });
+
+	    var sensations = ('Wet Sticky Dry Moist Damp Slippery').split(' ');
+		var pickerSensations = app.f7.picker({
+	        input: '#sensation',
+	        cols: [
+	            {
+	                textAlign: 'center',
+	                values: sensations
+	            }
+	        ]
 	    });
 
 		bindEvents(params.bindings);
@@ -32,8 +72,9 @@ define(['app', 'js/billingsModel', 'hbs!js/billingsEdit/billingsEdit'], function
 	}
 
 	function bindSaveEvent(doneCallback) {
-		$('.billings-save-link').on('click', function() {
-			var inputValues = $('.billings-edit-form input');
+		$('.js-billings-save-link').on('click', function() {
+			var inputValues = $('.billings-edit-form input, textarea');			
+			console.log(inputValues);
 			doneCallback(inputValues);
 		});
 	}

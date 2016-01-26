@@ -1,6 +1,6 @@
 define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function(app, Billings, View) {
 
-	var billings = null;
+	var observation = null;
 	var state = {
 		isNew: false
 	};
@@ -13,23 +13,23 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 	function init(query){
 		var billings = JSON.parse(localStorage.getItem("billingsData"));
 		if (query && query.id) {
-			billings = new Billings(_.find(billings, { id: query.id }));
+			observation = new Billings(_.find(billings, { id: query.id }));
 			state.isNew = false;
 		}
 		else {
-			billings = new Billings();
+			observation = new Billings();
 			state.isNew = true;
 		}
-		View.render({ model: billings, bindings: bindings, state: state, doneCallback: saveBillings });
+		View.render({ model: observation, bindings: bindings, state: state, doneCallback: saveBillings });
 	}
 
 	function deleteBillings() {
 		app.f7.actions([[{
-			text: 'Delete Billings',
+			text: 'Delete Observations',
 			red: true,
 			onClick: function() {
 				var billings = JSON.parse(localStorage.getItem("billingsData"));
-				_.remove(billings, { id: billings.id });
+				_.remove(billings, { id: observation.id });
 				localStorage.setItem("billingsData", JSON.stringify(billings));
 				app.router.load('day'); // reRender main page view
 				app.mainView.goBack("index.html", false);
@@ -41,29 +41,30 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 		}]]);
 	}
 
-	function saveBillings(inputValues) {
-		billings.setValues(inputValues);
-		if (!billings.validate()) {
-			app.f7.alert("First name and last name are empty");
-			return;
-		}
+	function saveBillings(inputValues) {		
+		observation.setValues(inputValues);
+		// if (!billings.validate()) {
+		// 	app.f7.alert("First name and last name are empty");
+		// 	return;
+		// }
 		var billings = JSON.parse(localStorage.getItem("billingsData"));
 		if (!state.isNew) {
-			_.remove(billings, { id: billings.id });
+			_.remove(billings, { id: observation.id });
 		}
-		billings.push(billings);
+		billings.push(observation);
 		localStorage.setItem("billingsData", JSON.stringify(billings));
 		app.router.load('day'); // reRender main page view
 		closePage();
 	}
 
 	function closePage() {
-		if (!state.isNew) {
-			app.router.load('day', {id: billings.id});
-		}
-		else {
-			app.mainView.loadPage('day.html?id=' + billings.id, false);
-		}
+		// if (!state.isNew) {
+		// 	app.router.load('day', {id: observation.id});
+		// }
+		// else {
+		// 	app.mainView.loadPage('index.html?id=' + observation.id, false);
+		// }
+		app.router.load('day', {id: observation.id});
 		app.f7.closeModal();
 	}
 
