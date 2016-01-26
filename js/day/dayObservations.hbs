@@ -1,16 +1,7 @@
+<div class="content-block-title">Day {{dayNumber}}</div>
 {{#if sensation}}
 	<div class="list-block">
 		<ul>
-			{{#if isPeak}}
-				<li>
-				  <div class="item-content">
-				    <div class="item-media"><i class="flaticon-ascending24"></i></div>
-				    <div class="item-inner"> 
-				      	<div class="item-title">Peak</div>
-				      	<div class="item-after"><span class="badge">YES</span></div>
-				    </div>
-				</div>				
-			{{/if}}	
 			{{#if blood}}
 				<li>
 				  <div class="item-content">
@@ -22,6 +13,7 @@
 				  </div>
 				</li>
 			{{/if}}
+
 			{{#if appearance}}
 				<li>
 				  <div class="item-content">
@@ -36,14 +28,67 @@
 			{{#if sensation}}
 				<li>
 				  <div class="item-content">
-				    <div class="item-media"><i class="flaticon-female131"></i></div>
+				    <div class="item-media"><i class="flaticon-circle213"></i></div>
 				    <div class="item-inner"> 
-				      <div class="item-title">Sensation</div>
+				      <div class="item-title">Sensation at vulva</div>
 				      <div class="item-after"> {{sensation}}</div>
 				    </div>
 				  </div>
 				</li>
 			{{/if}}	
+			<li>
+			  <div class="item-content">
+			    <div class="item-media"><i class="flaticon-uterus"></i></div>
+			    <div class="item-inner"> 
+			      <div class="item-title">Vulva Swollen?</div>
+			      <div class="item-after"><span class="badge">{{#if swollen}}YES{{else}}NO{{/if}}</span></div>	
+			    </div>
+			  </div>
+			</li>
+			{{#if fluidity}}
+				<li>
+				  <div class="item-content">
+				    <div class="item-media"><i class="flaticon-ascending1"></i></div>
+				    <div class="item-inner"> 
+				      <div class="item-title">Discharge Fluidity</div>
+				      <div class="item-after"> {{fluidity}}</div>
+				    </div>
+				  </div>
+				</li>
+			{{/if}}
+			{{#if quantity}}
+				<li>
+				  <div class="item-content">
+				    <div class="item-media"><i class="flaticon-blood10"></i></div>
+				    <div class="item-inner"> 
+				      <div class="item-title">Discharge Quantity</div>
+				      <div class="item-after"> {{quantity}}</div>
+				    </div>
+				  </div>
+				</li>
+			{{/if}}
+			<li>
+			  <div class="item-content">
+			    <div class="item-media"><i class="icon icon-form-gender"></i></div>
+			    <div class="item-inner"> 
+			      	<div class="item-title">Intercourse</div>
+			      	<div class="item-after"><span class="badge">{{#if intercourse}}YES{{else}}NO{{/if}}</span></div>
+			    </div>
+			  </div>
+			</li>
+			{{#if notes}}
+				<li>
+				  <div class="item-content">
+				    <div class="item-media"><i class="icon icon-form-comment"></i></div>
+				    <div class="item-inner"> 
+				      <div class="item-title">Notes</div>
+				      <div class="item-after">
+				      	<p> {{notes}}</p>
+				      </div>
+				    </div>
+				  </div>
+				</li>
+			{{/if}}
 		</ul>
 	<div>
 {{else}}

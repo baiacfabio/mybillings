@@ -7,7 +7,7 @@ define(['app'], function(app) {
 		values = values || {};
 		this.id = values['id'] || id;		
 		this.createdOn = values['createdOn'] || new Date();
-
+		this.dayNumber = values["dayNumber"] || 0;
 		this.timeStamp = values['timeStamp'] || today.valueOf();
 		this.day = values['day'] || today.format('dddd');
 		this.date = values['date'] || today.format('YYYY-MM-DD');

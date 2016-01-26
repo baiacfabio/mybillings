@@ -19,25 +19,25 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 			element: '.js-chart-tab',
 			event: 'click',
 			handler: showChart
-		},
-		{
-			element: 'js-current-date',
-			event: 'change',
-			handler: getCurrentDate
 		}
 	];
+	var isNew = false;
 	var $ = Dom7;
 	var query = {};
 	var date = new Date($('#mb-picker-date').val());	
 	query["date"] = moment(+date).format('YYYY-MM-DD');	
 	var billings = loadBillingsData(query);
 
-
-	function getCurrentDate(event){
-		console.log(event);
-		var date = moment($('#mb-picker-date').val()).format('YYYY-MM-DD');
-		console.log(date);
-	};
+	var calendarDefault = app.f7.calendar({
+		input: '#mb-picker-date', dateFormat: 'DD, MM dd, yyyy', value: [new Date()],
+		onChange: function(p, values, displayValues) {			
+			var q = {};
+			q["date"] = moment(values[0]).format('YYYY-MM-DD');	
+			var observations = loadBillingsData(q);						
+			DayView.reRender({ model: observations });
+		}
+	});	
+	
 
 	function init(){	
 		DayView.render({
@@ -47,8 +47,10 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 	};
 
 	function openAddPopup(e) {
-		var obj = (window.PickerDate === date) ? {id: billings.id } : null;
-		app.router.load('billingsEdit', obj );		
+		var d = new Date($('#mb-picker-date').val());
+		var date = moment(+d).format('YYYY-MM-DD');
+		var q = (!isNew) ? {date: date } : null;
+		app.router.load('billingsEdit', q );		
 	};
 
 	function showChart() {				
@@ -57,32 +59,39 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 	};
 
 	function showObservations() {
-		var date = window.PickerDate;	
-		query["date"] = moment(+date).format('YYYY-MM-DD');	
-		var billings = loadBillingsData(query);
+		var d = new Date($('#mb-picker-date').val()),
+			date = moment(+d).format('YYYY-MM-DD'),
+			q = {};
+		q["date"] = date;	
+		console.log(q);
+		var observation = loadBillingsData(q);
+		console.log(observation);
 		DayView.reRender({ model: billings });
 	};
 
 	function loadBillingsData(filter) {
-		localStorage.clear();
+		//localStorage.clear();
 		var localBillings = localStorage.getItem("billingsData");
-		var billings = localBillings ? JSON.parse(localBillings) : tempInitializeStorage();
+		var observations = localBillings ? JSON.parse(localBillings) : tempInitializeStorage();
+		var observation = null
 		// if (filter) {
 		// 	billings = _.filter(billings, filter);
-		// }
+		// }		
 		if (filter && filter.date) {
-			billings = new Billings(_.find(billings, { date: filter.date }));
+			var o = _.find(observations, filter);			
+			observation = new Billings(o);			
+			isNew = (o === undefined);			
 		}
 		// billings = _.groupBy(billings, function(contact) { return contact.firstName.charAt(0); });
 		// billings = _.toArray(_.mapValues(billings, function(value, key) { return { 'letter': key, 'list': value }; }));
-		return billings;
+		return observation;
 	};
 
 	function tempInitializeStorage() {
 		var billings = [
-			new Billings({ "date": "2015-01-19", "day": "Monday", "isCycleStart": true, "sensation": "wet", "blood": "bleeding", "notes": "An unchanging discharge that produces the same sensation and appearance day after day. "}),
-			new Billings({ "date": "2015-01-20", "day": "Monday", "sensation": "wet", "blood": "bleeding", "notes": "The vulva feels dry. Nothing is seen."}),
-			new Billings({ "date": "2015-01-21", "day": "Monday", "sensation": "wet", "blood": "bleeding", "notes": "Heavy bleeding obscures mucus when ovulation is early"}),
+			new Billings({ "date": "2016-01-19", "day": "Tuesday", "isCycleStart": true, "sensation": "Wet", quantity: "Lots", "blood": "Bleeding", fluidity: "Thick", notes: "An unchanging discharge that produces the same sensation and appearance day after day. "}),
+			new Billings({ "date": "2016-01-20", "day": "Wednesday", "sensation": "Moist", quantity: "Normal", "blood": "bleeding", fluidity: "Stringy (like eggwhite)", "notes": "The vulva feels dry. Nothing is seen."}),
+			new Billings({ "date": "2016-01-21", "day": "Thursday", "sensation": "Wet", quantity: "Normal", "blood": "bleeding", fluidity: "Thin", "notes": "Heavy bleeding obscures mucus when ovulation is early"}),
 		];
 		localStorage.setItem("billingsData", JSON.stringify(billings));
 		return JSON.parse(localStorage.getItem("billingsData"));

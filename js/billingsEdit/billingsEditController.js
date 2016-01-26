@@ -11,9 +11,9 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 	}];
 
 	function init(query){
-		var billings = JSON.parse(localStorage.getItem("billingsData"));
-		if (query && query.id) {
-			observation = new Billings(_.find(billings, { id: query.id }));
+		var data = JSON.parse(localStorage.getItem("billingsData"));
+		if (query && query.date) {
+			observation = new Billings(_.find(data, query));			
 			state.isNew = false;
 		}
 		else {

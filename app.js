@@ -114,10 +114,7 @@ define('app', ['js/router', 'js/utils'], function(Router, Utils) {
     //     ]
     // });
     
-    var calendarDefault = f7.calendar({
-        input: '#mb-picker-date', dateFormat: 'DD, MM dd, yyyy'
-    });
-	return {
+    return {
 		f7: f7,
 		mainView: mainView,
 		router: Router,

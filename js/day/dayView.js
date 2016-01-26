@@ -3,14 +3,16 @@ define([
 	'hbs!js/day/dayChart'], function(dayObservationsTemplate, dayChartTemplate) {
 	var $ = Dom7;
 
-	function render(params) {		
+	function render(params) {	
 		$('.js-observations-container').html(dayObservationsTemplate(params.model));		
 		bindEvents(params.bindings);
 	}
 
 	function reRender(params) {
-		$('.js-observations-container').html(dayObservationsTemplate({ model: params.model }));		
-		$('.js-chart-container').html(dayChartTemplate({ model: params.model }));
+		//console.log(params);
+		//console.log(dayObservationsTemplate(params.model));
+		$('.js-observations-container').html(dayObservationsTemplate(params.model));		
+		$('.js-chart-container').html(dayChartTemplate(params.model));
 	}
 
 	function bindEvents(bindings) {
