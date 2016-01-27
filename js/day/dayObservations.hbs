@@ -1,4 +1,4 @@
-<div class="content-block-title">Day {{dayNumber}}</div>
+
 {{#if sensation}}
 	<div class="list-block">
 		<ul>
@@ -69,7 +69,7 @@
 			{{/if}}
 			<li>
 			  <div class="item-content">
-			    <div class="item-media"><i class="icon icon-form-gender"></i></div>
+			    <div class="item-media"><i class="flaticon-male243"></i></div>
 			    <div class="item-inner"> 
 			      	<div class="item-title">Intercourse</div>
 			      	<div class="item-after"><span class="badge">{{#if intercourse}}YES{{else}}NO{{/if}}</span></div>
@@ -77,23 +77,27 @@
 			  </div>
 			</li>
 			{{#if notes}}
-				<li>
-				  <div class="item-content">
-				    <div class="item-media"><i class="icon icon-form-comment"></i></div>
-				    <div class="item-inner"> 
-				      <div class="item-title">Notes</div>
-				      <div class="item-after">
-				      	<p> {{notes}}</p>
-				      </div>
-				    </div>
-				  </div>
-				</li>
+			
+				<div class="messages">
+	  				<div class="message message-received">
+						<div class="message-name">Notes <i class="flaticon-note65"></i></div>  					
+						<div class="message-text">{{notes}}</div>
+					</div>
+				</div>
+			
 			{{/if}}
 		</ul>
 	<div>
 {{else}}
-	<span class="fa fa-binoculars fa-5x"></span>
-	<p>No Observations</p>
-	<p> Tap the "+" button to add an observation</p>
+	<div class="row">
+	    <!-- Each "cell" has col-[widht in percents] class -->
+	    <div class="col-10">&nbsp;</div>
+	    <div class="col-80 mb-grid">
+	    	<span class="fa fa-binoculars fa-5x center"></span>
+	    	<h1>No Observations</h1>
+			<p> Tap the "+" button to add an observation</p>
+	    </div>
+	    <div class="col-10">&nbsp;</div>
+	</div>
 {{/if}}
 

@@ -24,9 +24,11 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 	var isNew = false;
 	var $ = Dom7;
 	var query = {};
-	var date = new Date($('#mb-picker-date').val());	
-	query["date"] = moment(+date).format('YYYY-MM-DD');	
+	var date = $('#mb-picker-date').val().split(',')[1];	
+	console.log(date);
+	query["date"] = moment(date).format('YYYY-MM-DD');	
 	var billings = loadBillingsData(query);
+
 
 	var calendarDefault = app.f7.calendar({
 		input: '#mb-picker-date', dateFormat: 'DD, MM dd, yyyy', value: [new Date()],
@@ -63,27 +65,20 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 			date = moment(+d).format('YYYY-MM-DD'),
 			q = {};
 		q["date"] = date;	
-		console.log(q);
-		var observation = loadBillingsData(q);
-		console.log(observation);
-		DayView.reRender({ model: billings });
+		var obs = loadBillingsData(q);		
+		DayView.reRender({ model: obs });
 	};
 
-	function loadBillingsData(filter) {
-		//localStorage.clear();
+	function loadBillingsData(filter) {		
 		var localBillings = localStorage.getItem("billingsData");
 		var observations = localBillings ? JSON.parse(localBillings) : tempInitializeStorage();
 		var observation = null
-		// if (filter) {
-		// 	billings = _.filter(billings, filter);
-		// }		
+
 		if (filter && filter.date) {
 			var o = _.find(observations, filter);			
 			observation = new Billings(o);			
 			isNew = (o === undefined);			
 		}
-		// billings = _.groupBy(billings, function(contact) { return contact.firstName.charAt(0); });
-		// billings = _.toArray(_.mapValues(billings, function(value, key) { return { 'letter': key, 'list': value }; }));
 		return observation;
 	};
 

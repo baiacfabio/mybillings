@@ -74,7 +74,6 @@ define(['app', 'js/billingsModel', 'hbs!js/billingsEdit/billingsEdit'], function
 	function bindSaveEvent(doneCallback) {
 		$('.js-billings-save-link').on('click', function() {
 			var inputValues = $('.billings-edit-form input, textarea');			
-			console.log(inputValues);
 			doneCallback(inputValues);
 		});
 	}

@@ -44,7 +44,7 @@ define(['app'], function(app) {
 
 	Billings.prototype.validate = function() {
 		var result = true;
-		if (_.isEmpty(this.firstName) && _.isEmpty(this.lastName)) {
+		if (_.isEmpty(this.appearance) && _.isEmpty(this.sensation)) {
 			result = false;
 		}
 		return result;
