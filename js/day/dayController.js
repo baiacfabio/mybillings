@@ -25,7 +25,7 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 	var $ = Dom7;
 	var query = {};
 	var date = $('#mb-picker-date').val().split(',')[1];	
-	console.log(date);
+
 	query["date"] = moment(date).format('YYYY-MM-DD');	
 	var billings = loadBillingsData(query);
 
@@ -41,7 +41,8 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 	});	
 	
 
-	function init(){	
+	function init(){
+		if (arguments[0] && arguments[0].hasOwnProperty('date'))	billings = loadBillingsData(arguments[0]);		
 		DayView.render({
 			model: billings,
 			bindings: bindings

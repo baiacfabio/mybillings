@@ -31,8 +31,8 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 				var billings = JSON.parse(localStorage.getItem("billingsData"));
 				_.remove(billings, { id: observation.id });
 				localStorage.setItem("billingsData", JSON.stringify(billings));
-				app.router.load('day'); // reRender main page view
-				app.mainView.goBack("index.html", false);
+				app.router.load('day', {date: observation.date}); // reRender main page view
+				//app.mainView.goBack("index.html", false);
 				app.f7.closeModal();
 			}
 		}], [{
@@ -53,7 +53,9 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 		}
 		billings.push(observation);
 		localStorage.setItem("billingsData", JSON.stringify(billings));
-		app.router.load('day'); // reRender main page view
+		app.router.load('day', {date: observation.date}); // reRender main page view
+		//app.router.load('day'); // reRender main page view
+		
 		closePage();
 	}
 
@@ -64,7 +66,7 @@ define(["app", "js/billingsModel", "js/billingsEdit/billingsEditView"], function
 		// else {
 		// 	app.mainView.loadPage('index.html?id=' + observation.id, false);
 		// }
-		app.router.load('day', {id: observation.id});
+		app.router.load('day', {date: observation.date});
 		app.f7.closeModal();
 	}
 
