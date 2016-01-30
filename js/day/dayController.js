@@ -35,7 +35,8 @@ define(["app", "js/billingsModel", "js/day/dayView"], function(app, Billings, Da
 		onChange: function(p, values, displayValues) {			
 			var q = {};
 			q["date"] = moment(values[0]).format('YYYY-MM-DD');	
-			var observations = loadBillingsData(q);						
+			var observations = loadBillingsData(q);	
+			$("#updateBillings").toggleClass("mb-icon-edit icon-plus", isNew);
 			DayView.reRender({ model: observations });
 		}
 	});	

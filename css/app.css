@@ -35,6 +35,16 @@ body {
   -webkit-transition: 200ms;
   transition: 200ms;
 }
+.tab .list-block {
+  margin: 0;    
+}
+h1.titlex2 {
+  font-size: 3.2em;
+}
+.fade-bg .fa-pie-chart,
+.fade-bg .fa-binoculars {
+  opacity: 0.7;
+}
 i.mb-icon-email {
   width: 24px;
   height: 24px;
